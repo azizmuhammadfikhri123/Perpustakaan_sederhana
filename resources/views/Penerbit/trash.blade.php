@@ -31,11 +31,8 @@
                                 <td>{{$item->nama}}</td>
                                 <td>
                                     <a href="/penerbit/trash/{{$item->id}}" class="btn btn-warning">Restore</a>
-                                    <form action="#" method="post" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger ">Hapus Permanen</button>
-                                    </form>
+                                    <a href="/penerbit/trash/delete/{{$item->id}}" class="btn btn-danger d-inline">Hapus Permanen</a>
+
                                 </td>
                             </tr>
                             @endforeach

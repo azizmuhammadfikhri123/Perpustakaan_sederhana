@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/penerbit/{penerbit}/delete', 'PenerbitController@destroy');
     Route::get('/penerbit/trash', 'PenerbitController@trash');
     Route::get('/penerbit/trash/{id}', 'PenerbitController@restore');
+    Route::get('/penerbit/trash/delete/{id}', 'PenerbitController@deletePermanen');
 
     Route::get('/buku', 'BukuController@index');
     Route::get('/create/buku', 'BukuController@create');

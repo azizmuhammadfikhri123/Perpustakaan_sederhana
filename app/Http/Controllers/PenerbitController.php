@@ -64,6 +64,7 @@ class PenerbitController extends Controller
      */
     public function show(penerbit $penerbit)
     {
+        //
     }
 
     /**
@@ -123,6 +124,13 @@ class PenerbitController extends Controller
     {
         $kembali = penerbit::onlyTrashed()->where('id', $id);
         $kembali->restore();
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('status', 'Data Berhasil di Kembalikan!');
+    }
+
+    public function deletePermanen($id)
+    {
+        $hapus = penerbit::onlyTrashed()->where('id', $id);
+        $hapus->forceDelete();
+        return redirect('/dashboard')->with('status', 'Data Berhasil di Hapus Permanen!');
     }
 }
