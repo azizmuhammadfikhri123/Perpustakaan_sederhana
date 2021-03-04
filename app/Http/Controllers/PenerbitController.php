@@ -64,7 +64,6 @@ class PenerbitController extends Controller
      */
     public function show(penerbit $penerbit)
     {
-
     }
 
     /**
@@ -75,7 +74,7 @@ class PenerbitController extends Controller
      */
     public function edit(penerbit $penerbit)
     {
-        
+
         return view('penerbit.edit', compact('penerbit'));
     }
 
@@ -92,11 +91,12 @@ class PenerbitController extends Controller
             'penerbitID' => 'required',
             'nama' => 'required'
         ]);
-        
+
         penerbit::where('id', $penerbit->id)
-                ->update([
-                    'penerbitID' => $request->penerbitID,
-                    'nama' => $request->nama]);
+            ->update([
+                'penerbitID' => $request->penerbitID,
+                'nama' => $request->nama
+            ]);
 
         return redirect('/dashboard')->with('status', 'Data Penerbit Berhasil Diupdate!');
     }
@@ -111,5 +111,18 @@ class PenerbitController extends Controller
     {
         penerbit::destroy($penerbit->id);
         return redirect('/dashboard')->with('status', 'Data Penerbit Berhasil Dihapus!');
+    }
+
+    public function trash()
+    {
+        $sampah = penerbit::onlyTrashed()->get();
+        return view('penerbit.trash', compact('sampah'));
+    }
+
+    public function restore($id)
+    {
+        $kembali = penerbit::onlyTrashed()->where('id', $id);
+        $kembali->restore();
+        return redirect('/dashboard');
     }
 }

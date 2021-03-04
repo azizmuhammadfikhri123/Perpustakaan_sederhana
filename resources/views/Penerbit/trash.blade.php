@@ -7,8 +7,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Kumpulan Data Penerbit</h6>
-                <a href="/create" class="btn btn-primary float-right">New Penerbit</a>
-                <a href="/penerbit/trash" class="btn btn-success float-right">Riwayat</a>
+                <a href="/dashboard" class="btn btn-primary float-right">Kembali</a>
             </div>
             @if (session('status'))
                 <div class="alert alert-success">
@@ -26,16 +25,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $item)
+                            @foreach ($sampah as $item)
                             <tr class="text-center">
                                 <td>{{$item->penerbitID}}</td>
                                 <td>{{$item->nama}}</td>
                                 <td>
-                                    <a href="/penerbit/edit/{{$item->id}}" class="btn btn-warning">Edit</a>
-                                    <form action="/penerbit/{{$item->id}}/delete" method="post" class="d-inline">
+                                    <a href="/penerbit/trash/{{$item->id}}" class="btn btn-warning">Restore</a>
+                                    <form action="#" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
-                                        <button type="submit" class="btn btn-danger ">Hapus</button>
+                                        <button type="submit" class="btn btn-danger ">Hapus Permanen</button>
                                     </form>
                                 </td>
                             </tr>
