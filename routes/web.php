@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/buku/{buku}/edit', 'BukuController@edit');
     Route::patch('/buku/update/{buku}', 'BukuController@update');
     Route::delete('/buku/delete/{buku}', 'BukuController@destroy');
+    Route::get('/buku/trash', 'BukuController@trash');
+    Route::get('/buku/trash/{id}', 'BukuController@restore');
+    Route::get('/buku/trash/deletePermanen/{id}', 'BukuController@hapusPermanen');
 });
 
 Auth::routes();

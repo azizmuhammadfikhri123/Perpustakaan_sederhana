@@ -6,9 +6,7 @@
     <div class="col-md-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Kumpulan Data Buku</h6>
-                <a href="/create/buku" class="btn btn-primary float-right">New Buku</a>
-                <a href="/buku/trash" class="btn btn-success float-right">Riwayat</a>
+                <a href="/buku" class="btn btn-primary float-right">Kembali</a>
             </div>
             @if (session('status'))
                 <div class="alert alert-success">
@@ -28,19 +26,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $dt)
+                            @foreach ($sampah as $dt)
                             <tr class="text-center">
                                 <td>{{$dt->bukuID}}</td>
                                 <td>{{$dt->judul}}</td>
                                 <td>{{$dt->penerbit->nama}}</td>
                                 <td>{{$dt->pengarang}}</td>
                                 <td>
-                                    <a href="/buku/{{$dt->id}}/edit" class="btn btn-warning">Edit</a>
-                                    <form action="/buku/delete/{{$dt->id}}" method="post" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger ">Hapus</button>
-                                    </form>
+                                    <a href="/buku/trash/{{$dt->id}}" class="btn btn-warning">Restore</a>
+                                    <a href="/buku/trash/deletePermanen/{{$dt->id}}" class="btn btn-danger">Hapus Permanen</a>
+
                                 </td>
                             </tr>
                             @endforeach

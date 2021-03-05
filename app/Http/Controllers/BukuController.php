@@ -101,12 +101,12 @@ class BukuController extends Controller
         ]);
 
         buku::where('id', $buku->id)
-                ->update([
-                    'bukuID' => $request->bukuID,
-                    'judul' => $request->judul,
-                    'penerbitID' => $request->penerbitID,
-                    'pengarang' => $request->pengarang
-                ]);
+            ->update([
+                'bukuID' => $request->bukuID,
+                'judul' => $request->judul,
+                'penerbitID' => $request->penerbitID,
+                'pengarang' => $request->pengarang
+            ]);
 
         return redirect('/buku')->with('status', 'Data Buku Berhasil Diupdate!');
     }
@@ -121,5 +121,25 @@ class BukuController extends Controller
     {
         buku::destroy($buku->id);
         return redirect('buku')->with('status', 'Data Buku Berhasil Dihapus!');
+    }
+
+    public function trash()
+    {
+        $sampah = buku::onlyTrashed()->get();
+        return view('buku.trash', compact('sampah'));
+    }
+
+    public function restore($id)
+    {
+        $kembali = buku::onlyTrashed()->where('id', $id);
+        $kembali->restore();
+        return redirect('/buku')->with('status', 'Data Berhsil diRestore');
+    }
+
+    public function hapusPermanen($id)
+    {
+        $kembali = buku::onlyTrashed()->where('id', $id);
+        $kembali->forceDelete();
+        return redirect('/buku')->with('status', 'data telah berhasil di hapus permanen!');
     }
 }
