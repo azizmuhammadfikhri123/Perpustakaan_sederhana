@@ -136,10 +136,10 @@ class BukuController extends Controller
         return redirect('/buku')->with('status', 'Data Berhsil diRestore');
     }
 
-    public function hapusPermanen($id)
-    {
-        $kembali = buku::onlyTrashed()->where('id', $id);
-        $kembali->forceDelete();
-        return redirect('/buku')->with('status', 'data telah berhasil di hapus permanen!');
-    }
+    // public function hapusPermanen($id)
+    // {
+    //     $kembali = buku::onlyTrashed()->where('id', $id);
+    //     $kembali->forceDelete();
+    //     return redirect('/buku')->with('status', 'data telah berhasil di hapus permanen!');
+    // }
 }

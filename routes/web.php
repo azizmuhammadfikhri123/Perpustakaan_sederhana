@@ -26,9 +26,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/penerbit/{penerbit}/delete', 'PenerbitController@destroy');
     Route::get('/penerbit/trash', 'PenerbitController@trash');
     Route::get('/penerbit/trash/{id}', 'PenerbitController@restore');
-    Route::get('/penerbit/trash/delete/{id}', 'PenerbitController@deletePermanen');
+    // Route::get('/penerbit/trash/delete/{id}', 'PenerbitController@deletePermanen');
 
-    Route::get('/buku', 'BukuController@index');
+    Route::get('/buku', 'BukuController@index')->name('buku');
     Route::get('/create/buku', 'BukuController@create');
     Route::post('/buku/create', 'BukuController@store');
     Route::get('/buku/{buku}/edit', 'BukuController@edit');
@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/buku/delete/{buku}', 'BukuController@destroy');
     Route::get('/buku/trash', 'BukuController@trash');
     Route::get('/buku/trash/{id}', 'BukuController@restore');
-    Route::get('/buku/trash/deletePermanen/{id}', 'BukuController@hapusPermanen');
+    // Route::get('/buku/trash/deletePermanen/{id}', 'BukuController@hapusPermanen');
 });
 
 Auth::routes();

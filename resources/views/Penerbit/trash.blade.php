@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Halaman Penerbit')
+@section('title', 'Halaman Riwayat')
 
 @section('container')
 <div class="row">
@@ -31,7 +31,7 @@
                                 <td>{{$item->nama}}</td>
                                 <td>
                                     <a href="/penerbit/trash/{{$item->id}}" class="btn btn-warning">Restore</a>
-                                    <a href="/penerbit/trash/delete/{{$item->id}}" class="btn btn-danger d-inline">Hapus Permanen</a>
+                                    {{-- <a href="/penerbit/trash/delete/{{$item->id}}" class="btn btn-danger d-inline">Hapus Permanen</a> --}}
 
                                 </td>
                             </tr>

@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Halaman Buku')
+@section('title', 'Halaman Riwayat')
 
 @section('container')
 <div class="row">
@@ -34,7 +34,7 @@
                                 <td>{{$dt->pengarang}}</td>
                                 <td>
                                     <a href="/buku/trash/{{$dt->id}}" class="btn btn-warning">Restore</a>
-                                    <a href="/buku/trash/deletePermanen/{{$dt->id}}" class="btn btn-danger">Hapus Permanen</a>
+                                    {{-- <a href="/buku/trash/deletePermanen/{{$dt->id}}" class="btn btn-danger">Hapus Permanen</a> --}}
 
                                 </td>
                             </tr>
